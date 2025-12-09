@@ -27,4 +27,4 @@ class Book {
     void displayInfo();//вывести информацию о книге в консоль
 };
 }
-#endif BOOK_K
+#endif 

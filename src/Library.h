@@ -27,4 +27,4 @@ namespace myLibrary{
         void loadFromFile();// загрузить состояние из файла
     };
 }
-#endif;
+#endif

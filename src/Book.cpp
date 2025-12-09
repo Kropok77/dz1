@@ -36,17 +36,13 @@ void Book::borrowBook(const std::string& userName){
         return;
     }
     borrowedBy=userName;
+    isAvaliable=false;
 
 }
 void Book::returnBook(){
-    if (isAvaliable){
-        if (!isAvaliable){
-        std::cerr<<"ERROR - BOOK is alredy return";
-        return;
-    }
     borrowedBy="";
     isAvaliable=true;
-    }
+    
 }
 void Book::displayInfo(){
     std::cout<<"Название книги: "<<title<<std::endl;

@@ -37,8 +37,9 @@ void User::removeBook(const std::string& isbn) {
 }
 
 void User::displayProfile() {
-    std::cout << "Имя: " << name << " | ID: " << userId << std::endl;
-    std::cout << "Книг на руках: " << borrowedbooks.size() << " / " << maxbooksallowed << std::endl;
+    std::cout << "Имя: " << name<<std::endl;
+    std::cout<<"ID: " << userId << std::endl;
+    std::cout << "Книг: " << borrowedbooks.size() << " / " << maxbooksallowed << std::endl;
     if (!borrowedbooks.empty()) {
         std::cout << "Список ISBN:" << std::endl;
         for (const auto& book : borrowedbooks) {

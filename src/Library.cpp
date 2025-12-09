@@ -3,12 +3,12 @@
 #include <string>
 #include <vector>
 #include <fstream>
-#include <sstream> // ОБЯЗАТЕЛЬНО для stringstream
+#include <sstream> 
 
 using namespace myLibrary;
 
 Library::Library() {
-    datafile = "library_data.txt"; // Имя файла по умолчанию (без ../data/, так надежнее для тестов)
+    datafile = "library_data.txt"; 
     loadFromFile();
 }
 
@@ -26,20 +26,19 @@ void Library::addUser(const User& user) {
 }
 
 void Library::borrowBook(const std::string& userName, const std::string& isbn) {
-    // Сначала ищем книгу и пользователя
+    
     Book* book = findBookByISBN(isbn);
     User* user = findUserByName(userName);
 
     if (book == nullptr) {
-        std::cout << "ERROR: Book not found!" << std::endl;
+        std::cout << "ERROR: Book not found" << std::endl;
         return;
     }
     if (user == nullptr) {
-        std::cout << "ERROR: User not found!" << std::endl;
+        std::cout << "ERROR: User not found" << std::endl;
         return;
     }
 
-    // Проверяем условия
     if (!book->GetAvaliable()) {
         std::cout << "ERROR: Book is not available." << std::endl;
         return;
@@ -49,7 +48,6 @@ void Library::borrowBook(const std::string& userName, const std::string& isbn) {
         return;
     }
 
-    // Выполняем операцию
     book->borrowBook(userName);
     user->addBook(isbn);
 }
@@ -64,10 +62,8 @@ void Library::returnBook(const std::string& isbn) {
     std::string userName = book->GetBorrowedby();
     User* user = findUserByName(userName);
 
-    // Возвращаем книгу в каталог
     book->returnBook();
 
-    // Удаляем у пользователя, если он существует
     if (user != nullptr) {
         user->removeBook(isbn);
     }
@@ -95,7 +91,6 @@ void Library::displayAllBooks() {
     std::cout << "===Каталог книг===" << std::endl;
     for (int i = 0; i < books.size(); i++) {
         books[i].displayInfo();
-        std::cout << "------------------" << std::endl;
     }
 }
 
@@ -103,7 +98,6 @@ void Library::displayAllUsers() {
     std::cout << "===Список пользователей===" << std::endl;
     for (int i = 0; i < users.size(); i++) {
         users[i].displayProfile();
-        std::cout << "------------------" << std::endl;
     }
 }
 
@@ -152,7 +146,6 @@ void Library::loadFromFile() {
 
     if (in.is_open()) {
         std::string line;
-        // Временные переменные
         std::string title_p, author_p, isbn_p, borrowedby_p;
         int year_p;
         bool avaliable_p;
@@ -166,7 +159,6 @@ void Library::loadFromFile() {
                 getline(in, line); author_p = line.substr(8);
                 
                 getline(in, line); 
-                // Защита от короткой строки года
                 if(line.size() > 6) year_p = std::stoi(line.substr(6));
                 else year_p = 0;
 

@@ -97,11 +97,11 @@ int main() {
             cout << "Имя пользователя: ";
             getline(cin, name_u);
             
-            cout << "UserID (например USR_001): ";
+            cout << "UserID: ";
             cin >> userid;
             
             liba.addUser(User(name_u, userid, {}, 3));
-            cout << "\nУспешно! Пользователь зарегистрирован." << endl;
+            cout << "\nУспешно!" << endl;
             space_zad();
             break;
 
@@ -166,19 +166,18 @@ int main() {
         case 9:
             clean();
             liba.saveToFile();
-            cout << "Данные успешно сохранены в файл!" << endl;
+            cout << "Успешно" << endl;
             space_zad();
             break;
 
         case 10:
             clean();
             liba.saveToFile(); 
-            cout << "Работа завершена. До свидания!" << endl;
             break; 
 
         default:
             clean();
-            cout << "Неверный выбор. Попробуйте снова." << endl;
+            cout << "Неверный ответ" << endl;
             space_zad();
         }
 

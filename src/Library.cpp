@@ -107,7 +107,7 @@ void Library::displayAllUsers() {
 }
 
 void Library::saveToFile() {
-    std::ofstream out("../data/" + datafile);
+    std::ofstream out("./data/" + datafile);
     if (!out.is_open()) {
         out.open(datafile);
     }
@@ -145,7 +145,7 @@ void Library::saveToFile() {
 }
 
 void Library::loadFromFile() {
-    std::ifstream in("../data/" + datafile);
+    std::ifstream in("./data/" + datafile);
     if (!in.is_open()) {
         in.open(datafile);
     }

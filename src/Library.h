@@ -26,5 +26,5 @@ namespace myLibrary{
         void saveToFile();
         void loadFromFile();
     };
-}
+}//
 #endif

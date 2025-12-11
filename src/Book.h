@@ -25,5 +25,5 @@ class Book {
     void returnBook();
     void displayInfo();
 };
-}
+}//
 #endif 

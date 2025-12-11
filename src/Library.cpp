@@ -18,6 +18,11 @@ Library::~Library() {
 }
 
 void Library::addBook(const Book& book) {
+    if (book.GetYear()<1400){
+        std::cout << "ERROR: Book date is incorrect foramt" << std::endl;
+        return;
+    }
+    std::cout << "\nУспешно! Книга добавлена." << std::endl;
     books.push_back(book);
 }
 
@@ -123,6 +128,7 @@ void Library::saveToFile() {
             out << "Name: " << users[i].GetName() << std::endl;
             out << "UserID: " << users[i].GetUserId() << std::endl;
             out << "BorrowedBooks: ";
+
             
             std::vector<std::string> bBooks = users[i].GetBorrowedBooks();
             for (int j = 0; j < bBooks.size(); j++) {

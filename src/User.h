@@ -7,19 +7,19 @@ namespace UserLib{
        private:
         std::string name;
         std::string userId;
-        std::vector<std::string> borrowedbooks;//список выданных книг
-        int maxbooksallowed;//максимум книг которые можно взять(Обычно 3)
+        std::vector<std::string> borrowedbooks;
+        int maxbooksallowed;
        public:
         User();
         User(std::string name_p,std::string userId_p,std::vector<std::string> borrowedbooks_p,int maxbooksallowed_p);
         ~User();
-        std::string GetName() const;
-        std::string GetUserId() const;
-        std::vector<std::string> GetBorrowedBooks() const;
-        int GetMaxBooksAllowed() const;
-        bool canBorrowMore(); //проверка можно ли взять книгу
-        void addBook(const std::string& isbn);//добавить книгу пользователю
-        void removeBook(const std::string& isbn);//убрать книгу от пользователя
+        const std::string& GetName() const;
+        const std::string& GetUserId() const;
+        const std::vector<std::string>& GetBorrowedBooks() const;
+        const int& GetMaxBooksAllowed() const;
+        const bool canBorrowMore(); 
+        void addBook(const std::string& isbn);
+        void removeBook(const std::string& isbn);
         void displayProfile();
     };
        

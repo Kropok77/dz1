@@ -16,12 +16,12 @@ User::~User() {
     borrowedbooks.clear();
 }
 
-std::string User::GetName() const { return name; }
-std::string User::GetUserId() const { return userId; }
-std::vector<std::string> User::GetBorrowedBooks() const { return borrowedbooks; }
-int User::GetMaxBooksAllowed() const { return maxbooksallowed; }
+const std::string& User::GetName() const { return name; }
+const std::string& User::GetUserId() const { return userId; }
+const std::vector<std::string>& User::GetBorrowedBooks() const { return borrowedbooks; }
+const int& User::GetMaxBooksAllowed() const { return maxbooksallowed; }
 
-bool User::canBorrowMore() {
+const bool User::canBorrowMore() {
     return borrowedbooks.size() < maxbooksallowed;
 }
 
@@ -46,4 +46,5 @@ void User::displayProfile() {
             std::cout << " - " << book << std::endl;
         }
     }
+    std::cout<<std::endl;
 }

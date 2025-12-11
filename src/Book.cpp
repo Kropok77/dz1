@@ -5,29 +5,27 @@ using namespace mybooklib;
 Book::Book()
     : title(""), author(""),year(0),isbn(""),isAvaliable(false),borrowedBy(""){ 
     }
-Book::~Book()
-    {
-    }
+
 Book::Book(std::string name_p,std::string auth_p,int year_p,std::string isbn_p,bool isavaliable_p,std::string borrowedby_p)
     : title(name_p), author(auth_p),year(year_p),isbn(isbn_p),isAvaliable(isavaliable_p),borrowedBy(borrowedby_p)
     {
     }
-std::string Book::GetAuthor() const {
+const std::string& Book::GetAuthor() const {
     return author;
 }
-std::string Book::GetTitle() const {
+const std::string& Book::GetTitle() const {
     return title;
 }
-int Book::GetYear() const {
+const int& Book::GetYear() const {
     return year;
 }
-std::string Book::GetISBN() const {
+const std::string& Book::GetISBN() const {
     return isbn;
 }
-std::string Book::GetBorrowedby() const {
+const std::string& Book::GetBorrowedby() const {
     return borrowedBy;
 }
-bool Book::GetAvaliable() const{
+const bool& Book::GetAvaliable() const{
     return isAvaliable;
 }
 void Book::borrowBook(const std::string& userName){
@@ -51,6 +49,7 @@ void Book::displayInfo(){
     std::cout<<"ISBN: "<<isbn<<std::endl;
     std::cout<<"Наличие: "<<isAvaliable<<std::endl;
     std::cout<<"Кто читает в данный момент: "<<borrowedBy<<std::endl;
+    std::cout<<std::endl;
 }
 
 

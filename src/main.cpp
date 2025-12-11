@@ -85,7 +85,7 @@ int main() {
             cin >> year;
 
             liba.addBook(Book(name_p1, auth_p1, year, isbn_p1, true, ""));
-            cout << "\nУспешно! Книга добавлена." << endl;
+           
             space_zad();
             break;
 
@@ -117,7 +117,9 @@ int main() {
             cin >> isbn_p1;
             
             liba.borrowBook(name_u, isbn_p1);
+            cout << "Успешно" << endl;
             space_zad(); 
+            
             break;
 
         case 6:

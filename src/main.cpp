@@ -83,7 +83,6 @@ int main() {
             
             cout << "Год выпуска: ";
             cin >> year;
-
             liba.addBook(Book(name_p1, auth_p1, year, isbn_p1, true, ""));
            
             space_zad();
@@ -101,7 +100,7 @@ int main() {
             cin >> userid;
             
             liba.addUser(User(name_u, userid, {}, 3));
-            cout << "\nУспешно!" << endl;
+            
             space_zad();
             break;
 
@@ -117,7 +116,7 @@ int main() {
             cin >> isbn_p1;
             
             liba.borrowBook(name_u, isbn_p1);
-            cout << "Успешно" << endl;
+            
             space_zad(); 
             
             break;

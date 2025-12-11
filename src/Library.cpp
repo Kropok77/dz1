@@ -18,15 +18,44 @@ Library::~Library() {
 }
 
 void Library::addBook(const Book& book) {
+    try{
     if (book.GetYear()<1400){
         std::cout << "ERROR: Book date is incorrect foramt" << std::endl;
+        throw std::invalid_argument("Year is less than 1400");
+        return;
+        }
+        for (int i=0;i<books.size();i++){
+            if (books[i].GetISBN() == book.GetISBN()){
+                std::cout << "ERROR: Book with this ISBN already exists" << std::endl;
+                throw std::invalid_argument("Duplicate ISBN");
+                return;
+            }
+        }
+        std::cout << "\nУспешно! Книга добавлена." << std::endl;
+        books.push_back(book);
+    }catch(const std::invalid_argument& e){
+
+        std::cerr<<e.what()<<std::endl;
         return;
     }
-    std::cout << "\nУспешно! Книга добавлена." << std::endl;
-    books.push_back(book);
+
+    
 }
 
 void Library::addUser(const User& user) {
+    try{
+        for (int i=0;i<users.size();i++){
+            if (users[i].GetUserId() == user.GetUserId()){
+                std::cout << "ERROR: User with this UserID already exists" << std::endl;
+                throw std::invalid_argument("Duplicate UserID");
+                
+            }
+        }
+        std::cout << "\nУспешно!" << std::endl;
+    }catch(const std::invalid_argument& e){
+        std::cerr<<e.what()<<std::endl;
+        return;
+    }
     users.push_back(user);
 }
 
@@ -52,7 +81,7 @@ void Library::borrowBook(const std::string& userName, const std::string& isbn) {
         std::cout << "ERROR: User reached max book limit." << std::endl;
         return;
     }
-
+    std::cout << "Успешно" << std::endl;
     book->borrowBook(userName);
     user->addBook(isbn);
 }
@@ -66,12 +95,20 @@ void Library::returnBook(const std::string& isbn) {
 
     std::string userName = book->GetBorrowedby();
     User* user = findUserByName(userName);
-
+    try{
+        if (book->GetAvaliable()){
+            std::cout << "ERROR:!" << std::endl;
+            throw std::invalid_argument("Book is not borrowed");
+        }
+    }catch(const std::invalid_argument& e){
+        std::cerr<<e.what()<<std::endl;
+        return;
     book->returnBook();
 
     if (user != nullptr) {
         user->removeBook(isbn);
     }
+}
 }
 
 Book* Library::findBookByISBN(const std::string& isbn) {
